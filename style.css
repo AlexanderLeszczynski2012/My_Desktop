@@ -71,9 +71,22 @@ h1{
 
 .main{
     display: flex;
+    flex-wrap: wrap;
     height: 90vh; 
     max-width: 98vw;
     margin: auto;
+}
+
+@media (max-width: 1200px) {
+    .widget {
+        width: 48%;
+    }
+}
+
+@media (max-width: 800px) {
+    .widget {
+        width: 100%;
+    }
 }
 
 .widget{
@@ -136,6 +149,33 @@ h2{
     margin-top: 15px;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#nasa-apod{
+    text-align: center;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+#apod-title{
+    color: beige;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#apod-explanation{
+    font-size: 12px;
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#apod-loading{
+    color: beige;
+    font-style: italic;
 }
 
 

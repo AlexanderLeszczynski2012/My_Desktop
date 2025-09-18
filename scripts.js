@@ -60,9 +60,44 @@ function refreshSystemInfo() {
     updateSystemInfo();
 }
 
+/* --- NASA APOD FUNCTIONALITY --- */
+
+const NASA_API_KEY = '<api_key>';
+
+function loadNASAPhoto() {
+    const loadingDiv = document.getElementById('apod-loading');
+    const imageDiv = document.getElementById('apod-image');
+    const titleDiv = document.getElementById('apod-title');
+    const explanationDiv = document.getElementById('apod-explanation');
+    
+    loadingDiv.style.display = 'block';
+    imageDiv.style.display = 'none';
+    titleDiv.textContent = '';
+    explanationDiv.textContent = '';
+    
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            loadingDiv.style.display = 'none';
+            
+            if (data.media_type === 'image') {
+                imageDiv.src = data.url;
+                imageDiv.style.display = 'block';
+            }
+            
+            titleDiv.textContent = data.title;
+            explanationDiv.textContent = data.explanation;
+        })
+        .catch(error => {
+            loadingDiv.textContent = 'Error loading NASA photo';
+            console.error('NASA APOD Error:', error);
+        });
+}
+
 /* --- INITIALIZE ON LOAD --- */
 
 window.addEventListener('load', function() {
     loadNote();
     updateSystemInfo();
+    loadNASAPhoto();
 });

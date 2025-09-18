@@ -36,6 +36,17 @@
             </div>
             
             <div class="widget">
+                <h2>NASA Photo of the Day</h2>
+                <div id="nasa-apod">
+                    <div id="apod-loading">Loading...</div>
+                    <img id="apod-image" style="display:none; max-width:100%; border-radius:8px;" alt="NASA APOD">
+                    <h3 id="apod-title"></h3>
+                    <p id="apod-explanation"></p>
+                </div>
+                <button onclick="loadNASAPhoto()">Refresh Photo</button>
+            </div>
+            
+            <div class="widget">
                 <h2>System Info</h2>
                 <div id="system-info">
                     <p><strong>Browser:</strong> <span id="browser-info"></span></p>
