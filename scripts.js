@@ -62,7 +62,7 @@ function refreshSystemInfo() {
 
 /* --- NASA APOD FUNCTIONALITY --- */
 
-const NASA_API_KEY = '<api_key>';
+const NASA_API_KEY = 'j0ttli1tS7nNxTJmYRGMn9KBlHm4vTwIF9EywdoN';
 
 function loadNASAPhoto() {
     const loadingDiv = document.getElementById('apod-loading');
