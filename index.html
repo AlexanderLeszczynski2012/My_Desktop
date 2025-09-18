@@ -12,11 +12,39 @@
     <div class="container">
         <div class="top">
             <div id="date">Date</div>
-            <h1>My Personal Desktop</h1>
+            <h1>Alexander's Personal Desktop</h1>
             <div id="clock"></div>
         </div>
         <div class="main">
-           
+            <div class="widget">
+                <h2>Quick Notes</h2>
+                <textarea id="note-area" class="notepad" placeholder="Write your notes here..."></textarea>
+                <br>
+                <button onclick="saveNote()">Save</button>
+                <button onclick="clearNote()">Clear</button>
+            </div>
+            
+            <div class="widget">
+                <h2>Quick Links</h2>
+                <div class="links-container">
+                    <button onclick="openLink('https://github.com')">GitHub</button>
+                    <button onclick="openLink('https://stackoverflow.com')">Stack Overflow</button>
+                    <button onclick="openLink('https://developer.mozilla.org')">MDN Docs</button>
+                    <button onclick="openLink('https://codepen.io')">CodePen</button>
+                    <button onclick="openLink('https://aws.amazon.com')">AWS Console</button>
+                </div>
+            </div>
+            
+            <div class="widget">
+                <h2>System Info</h2>
+                <div id="system-info">
+                    <p><strong>Browser:</strong> <span id="browser-info"></span></p>
+                    <p><strong>Screen:</strong> <span id="screen-info"></span></p>
+                    <p><strong>Local Time:</strong> <span id="local-time"></span></p>
+                    <p><strong>Online Status:</strong> <span id="online-status"></span></p>
+                </div>
+                <button onclick="refreshSystemInfo()">Refresh</button>
+            </div>
         </div>
     </div>
 </body>
