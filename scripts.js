@@ -94,10 +94,52 @@ function loadNASAPhoto() {
         });
 }
 
+/* --- CURIOSITY ROVER FUNCTIONALITY --- */
+
+function loadCuriosityPhoto() {
+    const loadingDiv = document.getElementById('rover-loading');
+    const imageDiv = document.getElementById('rover-image');
+    const infoDiv = document.getElementById('rover-info');
+    
+    loadingDiv.style.display = 'block';
+    imageDiv.style.display = 'none';
+    infoDiv.textContent = '';
+    
+    // Get random sol (Mars day) between 1 and 3000
+    const randomSol = Math.floor(Math.random() * 3000) + 1;
+    
+    fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${randomSol}&api_key=${NASA_API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            loadingDiv.style.display = 'none';
+            
+            if (data.photos && data.photos.length > 0) {
+                const randomPhoto = data.photos[Math.floor(Math.random() * data.photos.length)];
+                
+                imageDiv.src = randomPhoto.img_src;
+                imageDiv.style.display = 'block';
+                
+                infoDiv.innerHTML = `
+                    <strong>Sol:</strong> ${randomPhoto.sol}<br>
+                    <strong>Camera:</strong> ${randomPhoto.camera.full_name}<br>
+                    <strong>Date:</strong> ${randomPhoto.earth_date}
+                `;
+            } else {
+                loadingDiv.textContent = 'No photos available for this sol';
+                setTimeout(loadCuriosityPhoto, 1000);
+            }
+        })
+        .catch(error => {
+            loadingDiv.textContent = 'Error loading rover photo';
+            console.error('Curiosity Rover Error:', error);
+        });
+}
+
 /* --- INITIALIZE ON LOAD --- */
 
 window.addEventListener('load', function() {
     loadNote();
     updateSystemInfo();
     loadNASAPhoto();
+    loadCuriosityPhoto();
 });
