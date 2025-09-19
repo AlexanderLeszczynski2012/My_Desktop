@@ -2,13 +2,19 @@ body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: beige;
     margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 .container{
     background-image: url("img/bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100vw;
 }
 
 button{
